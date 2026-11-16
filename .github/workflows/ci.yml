@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Python syntax
+        run: python -m compileall -q helper scripts
+      - name: JavaScript syntax
+        run: |
+          for f in extension/*.js; do node --check "$f"; done
+      - name: JSON files and version consistency
+        run: |
+          python - <<'PY'
+          import json, re
+          manifest = json.load(open("extension/manifest.json", encoding="utf-8"))
+          brand = json.load(open("branding/branding.json", encoding="utf-8"))
+          json.load(open("native/com.ytdl.helper.json", encoding="utf-8"))
+          server = re.search(r'"version": "([^"]+)"', open("helper/server.py", encoding="utf-8").read()).group(1)
+          versions = {manifest["version"], brand["version"], server}
+          assert len(versions) == 1, f"Version mismatch: {versions}"
+          PY

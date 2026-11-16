@@ -1,0 +1,9 @@
+{
+  "name": "com.ytdl.helper",
+  "description": "Starts the 4K YT Downloader helper",
+  "path": "YTDLHost.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://kllgdnbedbjghabjojldaglekaealmif/"
+  ]
+}

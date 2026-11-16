@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 260px; font-family: sans-serif; padding: 12px; margin: 0; }
+  .head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .head img { border-radius: 6px; }
+  h3 { margin: 0; font-size: 15px; }
+  #by { font-size: 11px; color: #666; }
+  select, button { width: 100%; padding: 8px; margin-bottom: 8px; font-size: 14px; box-sizing: border-box; }
+  button { background: #d00; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+  button:hover { background: #b00; }
+  button:disabled { background: #999; cursor: default; }
+  label { font-size: 13px; display: block; margin-bottom: 8px; }
+  #s { font-size: 13px; margin: 0; min-height: 18px; line-height: 1.35; }
+  #s.ok { color: #0a7a0a; }
+  #s.warn { color: #a56a00; }
+  #s.err { color: #c00; }
+  #foot { border-top: 1px solid #ddd; margin-top: 10px; padding-top: 8px; font-size: 12px; }
+  #links a { margin-right: 12px; color: #0b57d0; text-decoration: none; }
+  #links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+  <div class="head">
+    <img src="icons/icon48.png" width="34" height="34" alt="">
+    <div>
+      <h3 id="name">4K YT Downloader</h3>
+      <div id="by"></div>
+    </div>
+  </div>
+  <select id="q">
+    <option value="4320">Best available</option>
+    <option value="2160">4K (2160p)</option>
+    <option value="1440">1440p</option>
+    <option value="1080">1080p</option>
+    <option value="720">720p</option>
+    <option value="480">480p</option>
+    <option value="mp3">MP3 only (audio)</option>
+  </select>
+  <label><input type="checkbox" id="pl"> Download whole playlist</label>
+  <button id="go">Download</button>
+  <p id="s"></p>
+  <div id="foot"><div id="links"></div></div>
+  <script src="branding.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "4K YT Downloader",
+  "version": "1.0.0.0",
+  "description": "Download videos from YouTube and other supported sites in up to 4K. Only for content you own or have permission to download.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "scripting",
+    "contextMenus",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://localhost/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "exclude_matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*",
+        "https://music.youtube.com/*"
+      ],
+      "js": [
+        "content_any.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "4K YT Downloader",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqx/9ZX4unJRxLQeoFO95mPgSz32r/CXY8RNnTkc1HCCu/zW+/0KKtVYpJS8egu+BDV6RazhRvsOewN9gRKctpJ/UwBlPpzhckxByMrFZiLCAhbjkkv40xv9b2uatF930779Tu6323rCGCUdkUt4Kb6tQy25SkJYpqZGLH4RrXPTTfipUaWhuXSGcCAMInDORojoN1mR1I1iAXIKnP0Y/D0+MhnorCJtGxCYYjujH/RVFEmDFjg4tEnbSFOm6BtMMvogpNDLfLCXqaY+PD2oVK2fuOGtnkcKkTtANP1dpUZWLxVdd+d89zaOyoPqk+A3ihZ5rgc9RsgmCFVjkc7LpiQIDAQAB"
+}

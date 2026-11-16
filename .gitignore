@@ -1,0 +1,16 @@
+build/
+dist/
+dist_host/
+installer_output/
+*.spec
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.log
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
+branding/logo.ico
+installer/branding.iss

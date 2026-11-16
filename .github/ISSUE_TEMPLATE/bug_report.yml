@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a problem with the extension or the helper
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Shown in the helper window under About.
+      placeholder: 1.0.0.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows and browser version
+      placeholder: Windows 11, Chrome 130
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the video URL if it is public.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error details
+      description: Double-click the failed row in the helper window and paste the log.
+      render: text
